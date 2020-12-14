@@ -1,0 +1,36 @@
+@model Dish
+<h3 class = "text-align-center">Add a New Dish</h3> 
+
+<form asp-action = "CreateDish" asp-controller = "Home">
+    <label asp-for = "Name"></label>
+    <input asp-for = "Name">
+    <span class = "text-danger" asp-validation-for = "Name"></span>
+    <label asp-for = "Calories"></label>
+    <input asp-for = "Calories">
+    <span  class = "text-danger" asp-validation-for = "Calories"></span>
+    <label asp-for="ChefId"></label>
+    <select asp-for = "ChefId">
+        <option></option>
+    @{
+        foreach(Chef c in ViewBag.Chefs)
+        {
+            <option value = "@c.ChefId">@c.FirstName @c.LastName</option>
+        }
+    }
+    </select>
+    <span  class = "text-danger" asp-validation-for="ChefId"></span>
+    <label asp-for = "Tastiness"></label>
+    <select asp-for = "Tastiness">
+        <option></option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+    </select>
+    <span  class = "text-danger" asp-validation-for= "Tastiness"></span>
+    <label asp-for = "Description"></label>
+    <textarea asp-for = "Description"></textarea>
+    <span  class = "text-danger" asp-validation-for = "Description"></span>
+    <input type = "submit" value = "Add dish" class = "btn btn-primary m-3">
+</form>
